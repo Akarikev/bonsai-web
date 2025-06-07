@@ -1,11 +1,11 @@
 import { Metadata } from "next";
 
 export const siteConfig = {
-  name: "Bonsai 🌿",
+  name: "Bonsai 🌿 - State Management that grows 🪴",
   description:
     "A lightweight, flexible state management library for React applications",
-  url: "https://bonsai-ts.com",
-  ogImage: "https://bonsai-ts.com/og.jpg",
+  url: "https://bonsaijs.site",
+  ogImage: "https://bonsaijs.site/og.jpg",
   links: {
     github: "https://github.com/Akarikev/bonsai",
     twitter: "https://x.com/elorm_elom",
@@ -33,7 +33,7 @@ export const defaultMetadata: Metadata = {
   authors: [
     {
       name: "Prince Elorm",
-      url: "https://github.com/Akarikev",
+      url: "https://elorm.xyz",
     },
   ],
   creator: "Prince Elorm",
@@ -58,7 +58,7 @@ export const defaultMetadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: "@yourusername",
+    creator: "@elorm_elom",
   },
   icons: {
     icon: "/favicon.ico",

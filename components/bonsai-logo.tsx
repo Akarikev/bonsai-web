@@ -193,7 +193,7 @@ export function BonsaiLogo({
           className={`font-bold ${textSizeClasses[size]} tracking-tight`}
           style={{ color: currentColors.text }}
         >
-          Bonsai
+          Bonsai <span className="text-emerald-600 text-sm">盆栽</span>
         </span>
       )}
     </div>

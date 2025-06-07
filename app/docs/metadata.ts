@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     description:
       "Learn how to use Bonsai, the flexible state management library for React. Comprehensive guides for tree state, flat state, middleware, and more.",
     type: "article",
-    url: "https://bonsai-state.vercel.app/docs",
+    url: "https://bonsaijs.site/docs",
     siteName: "Bonsai State Management",
     images: [
       {
@@ -39,6 +39,6 @@ export const metadata: Metadata = {
     images: ["/docs-og-image.png"],
   },
   alternates: {
-    canonical: "https://bonsai-state.vercel.app/docs",
+    canonical: "https://bonsaijs.site/docs",
   },
 };

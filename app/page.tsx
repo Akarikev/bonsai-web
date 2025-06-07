@@ -9,6 +9,7 @@ import {
   Layers,
   Settings,
   Zap,
+  Github,
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -22,6 +23,7 @@ import { Badge } from "@/components/ui/badge";
 import { CodePlayground } from "@/components/code-playground";
 import { BonsaiLogo } from "@/components/bonsai-logo";
 import ComparisonTable from "@/components/comparison-table";
+import { AnimatedBonsai } from "@/components/animated-bonsai";
 
 export default function HomePage() {
   const [showPlayground, setShowPlayground] = useState(false);
@@ -63,7 +65,6 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section */}
-      {/* Hero Section */}
       <section className="py-20 px-4">
         <div className="container mx-auto text-center max-w-4xl">
           <Badge
@@ -77,16 +78,38 @@ export default function HomePage() {
             <br />
             <span className="text-emerald-600">That Grows With You 🌳</span>
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Meet <strong>Bonsai</strong> — the state library that doesn&apos;t
-            just *manage* your state, it hugs it, waters it, and sings to it
-            🌿🎶. Whether you want flat state, nested trees, or scoped vibes —
-            we&apos;ve got branches for all.
-          </p>
+          <div className="mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 leading-relaxed mb-4">
+              Meet <strong>Bonsai</strong> — the state library that doesn&apos;t
+              just *manage* your state, it hugs it, waters it, and sings to it
+              🌿🎶. Whether you want flat state, nested trees, or scoped vibes —
+              we&apos;ve got branches for all.
+            </p>
+            <div className="bg-emerald-50/50 border border-emerald-100 rounded-lg p-4 mb-8 max-w-2xl mx-auto">
+              <p className="text-emerald-800 text-sm font-medium mb-1">
+                Did you know?
+              </p>
+              <p className="text-emerald-700 text-sm">
+                <span className="font-semibold">Bonsai (&quot;盆栽&quot;)</span>{" "}
+                is Japanese for &quot;planted in a container&quot; — where{" "}
+                <span className="font-medium">盆 (bon)</span> means
+                &quot;tray&quot; and{" "}
+                <span className="font-medium">栽 (sai)</span> means
+                &quot;planting.&quot; state in the perfect environment. 🪴
+              </p>
+            </div>
+          </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Link href="/docs">
-              <Button variant="outline" size="lg">
-                📚 Show Me the Docs
+              <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700">
+                <GitBranch className="mr-2 h-5 w-5" />
+                Get Started
+              </Button>
+            </Link>
+            <Link href="https://github.com/Akarijkev/bonsai" target="_blank">
+              <Button size="lg" variant="outline">
+                <Github className="mr-2 h-5 w-5" />
+                GitHub
               </Button>
             </Link>
           </div>
@@ -120,6 +143,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <AnimatedBonsai />
 
       <section id="features" className="py-20 px-4 bg-white">
         <div className="container mx-auto max-w-6xl">
@@ -214,6 +239,65 @@ export default function HomePage() {
         </div>
       </section>
 
+      <div className="max-w-4xl mx-auto px-4 py-16">
+        <h2 className="text-3xl font-bold text-center mb-12">
+          🌱 Why We Planted Bonsai (And Water It Daily)
+        </h2>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-emerald-100">
+            <h3 className="text-xl font-semibold mb-4 flex items-center">
+              <span className="text-2xl mr-2">🌳</span>
+              The State Management Jungle
+            </h3>
+            <p className="text-gray-600">
+              Ever felt like managing state was like hacking through a
+              rainforest with a toothbrush? 🪥🌴 So did we. Bonsai brings order
+              to the chaos — a clean, calm canopy of predictable state with no
+              wild reducers lurking in the bushes.
+            </p>
+          </div>
+
+          <div className="bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-emerald-100">
+            <h3 className="text-xl font-semibold mb-4 flex items-center">
+              <span className="text-2xl mr-2">💡</span>
+              Devs Deserve Delight
+            </h3>
+            <p className="text-gray-600">
+              Life’s too short to squint at weird hook errors 😵‍💫. Bonsai is
+              designed with developer happiness in mind — clean APIs, helpful
+              logs, and no weird rituals. State management should feel like a
+              stroll, not a stress test 🧘.
+            </p>
+          </div>
+
+          <div className="bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-emerald-100">
+            <h3 className="text-xl font-semibold mb-4 flex items-center">
+              <span className="text-2xl mr-2">⚡</span>
+              Fast. Tiny. Ferociously Chill.
+            </h3>
+            <p className="text-gray-600">
+              Like a perfectly pruned bonsai tree (or a squirrel on a Red Bull),
+              Bonsai is tiny and optimized to the roots. It keeps your UI
+              reactive without breaking a sweat 🥵➡️😌. Say goodbye to
+              unnecessary renders.
+            </p>
+          </div>
+
+          <div className="bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-emerald-100">
+            <h3 className="text-xl font-semibold mb-4 flex items-center">
+              <span className="text-2xl mr-2">🤝</span>
+              Built With the Bonsai Fam
+            </h3>
+            <p className="text-gray-600">
+              Bonsai isn’t just a library, it’s a growing garden 🌺. We love
+              feedback, memes, and PRs (Pull Requests *and* Plant
+              Recommendations 🌿). Help us shape the tree — one branch at a time
+              💚.
+            </p>
+          </div>
+        </div>
+      </div>
       {/* Open Source Section */}
       <section className="py-20 px-4 bg-gradient-to-br from-emerald-50 via-white to-teal-50">
         <div className="container mx-auto max-w-4xl text-center">
