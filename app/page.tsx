@@ -101,15 +101,8 @@ export default function HomePage() {
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Link href="/docs">
-              <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700">
-                <GitBranch className="mr-2 h-5 w-5" />
-                Get Started
-              </Button>
-            </Link>
-            <Link href="https://github.com/Akarijkev/bonsai" target="_blank">
-              <Button size="lg" variant="outline">
-                <Github className="mr-2 h-5 w-5" />
-                GitHub
+              <Button variant="outline" size="lg">
+                📚 Show Me the Docs
               </Button>
             </Link>
           </div>
