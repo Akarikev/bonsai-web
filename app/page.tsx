@@ -256,7 +256,7 @@ export default function HomePage() {
               Devs Deserve Delight
             </h3>
             <p className="text-gray-600">
-              Life's too short to squint at weird hook errors 😵‍💫. Bonsai is
+              Life&apos;s too short to squint at weird hook errors 😵‍💫. Bonsai is
               designed with developer happiness in mind — clean APIs, helpful
               logs, and no weird rituals. State management should feel like a
               stroll, not a stress test 🧘.
