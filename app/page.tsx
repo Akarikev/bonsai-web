@@ -9,7 +9,6 @@ import {
   Layers,
   Settings,
   Zap,
-  Github,
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -257,7 +256,7 @@ export default function HomePage() {
               Devs Deserve Delight
             </h3>
             <p className="text-gray-600">
-              Life’s too short to squint at weird hook errors 😵‍💫. Bonsai is
+              Life's too short to squint at weird hook errors 😵‍💫. Bonsai is
               designed with developer happiness in mind — clean APIs, helpful
               logs, and no weird rituals. State management should feel like a
               stroll, not a stress test 🧘.
@@ -283,8 +282,8 @@ export default function HomePage() {
               Built With the Bonsai Fam
             </h3>
             <p className="text-gray-600">
-              Bonsai isn’t just a library, it’s a growing garden 🌺. We love
-              feedback, memes, and PRs (Pull Requests *and* Plant
+              Bonsai isn&apos;t just a library, it&apos;s a growing garden 🌺.
+              We love feedback, memes, and PRs (Pull Requests *and* Plant
               Recommendations 🌿). Help us shape the tree — one branch at a time
               💚.
             </p>
@@ -292,13 +291,13 @@ export default function HomePage() {
         </div>
       </div>
       {/* Open Source Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-emerald-50 via-white to-teal-50">
+      <section className="py-12 sm:py-20 px-4 bg-gradient-to-br from-emerald-50 via-white to-teal-50">
         <div className="container mx-auto max-w-4xl text-center">
-          <div className="bg-white rounded-2xl shadow-lg p-8 border border-emerald-100">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
+          <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-8 border border-emerald-100">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 tracking-tight">
               🌳 Open Source, Open Hearts
             </h2>
-            <p className="text-xl text-gray-600 mb-6 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-gray-600 mb-4 sm:mb-6 max-w-2xl mx-auto leading-relaxed">
               Bonsai is proudly open source! Join our growing community of
               developers who are passionate about making state management a joy,
               not a chore.
@@ -306,23 +305,23 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <div className="flex items-center gap-2 text-gray-600">
                 <div className="flex -space-x-2">
-                  <div className="w-8 h-8 rounded-full bg-emerald-100 border-2 border-white flex items-center justify-center text-emerald-600 font-bold">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-emerald-100 border-2 border-white flex items-center justify-center text-emerald-600 font-bold">
                     🌱
                   </div>
-                  <div className="w-8 h-8 rounded-full bg-blue-100 border-2 border-white flex items-center justify-center text-blue-600 font-bold">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-blue-100 border-2 border-white flex items-center justify-center text-blue-600 font-bold">
                     🌿
                   </div>
-                  <div className="w-8 h-8 rounded-full bg-teal-100 border-2 border-white flex items-center justify-center text-teal-600 font-bold">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-teal-100 border-2 border-white flex items-center justify-center text-teal-600 font-bold">
                     🌳
                   </div>
                 </div>
                 <span className="text-sm">Join 🌿🍃 contributors</span>
               </div>
-              <div className="h-6 w-px bg-gray-200 hidden sm:block"></div>
+              <div className="h-px sm:h-6 w-full sm:w-px bg-gray-200"></div>
               <div className="flex items-center gap-2 text-gray-600">
                 <div className="flex items-center gap-1">
                   <svg
-                    className="w-5 h-5 text-emerald-600"
+                    className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -332,15 +331,16 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <Link
                 href="https://github.com/Akarikev/bonsai"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="w-full sm:w-auto"
               >
                 <Button
                   size="lg"
-                  className="bg-emerald-600 hover:bg-emerald-700"
+                  className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700"
                 >
                   <GitBranch className="w-4 h-4 mr-2" />
                   Contribute to Bonsai
@@ -350,8 +350,13 @@ export default function HomePage() {
                 href="https://github.com/Akarikev/bonsai"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="w-full sm:w-auto"
               >
-                <Button variant="outline" size="lg">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
                   <svg
                     className="w-4 h-4 mr-2"
                     fill="currentColor"
