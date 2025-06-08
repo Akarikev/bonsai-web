@@ -373,7 +373,7 @@ export default function HomePage() {
       </section>
 
       {/* Playground Section */}
-      <section className="py-20 px-4 bg-white">
+      <section id="playground" className="py-20 px-4 bg-white">
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
             Play in the <span className="text-emerald-600">Bonsai Box</span>{" "}
