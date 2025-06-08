@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { defaultMetadata } from "./metadata";
 import { viewport } from "./viewport";
+import { Analytics } from "@vercel/analytics/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,6 +40,7 @@ export default function RootLayout({
             <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-teal-100/30 dark:bg-teal-900/10 rounded-full blur-3xl animate-blob animation-delay-2000" />
           </div>
           {children}
+          <Analytics />
         </div>
       </body>
     </html>
