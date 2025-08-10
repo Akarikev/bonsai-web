@@ -655,7 +655,7 @@ export default function HomePage() {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/roadmap"
                     className="hover:text-emerald-400 transition-colors"
                   >
                     Roadmap
