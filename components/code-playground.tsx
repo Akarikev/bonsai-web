@@ -23,35 +23,35 @@ export function CodePlayground() {
   const examples = useMemo<Example[]>(
     () => [
       {
-        title: "Tree State Counter",
-        description: "Basic counter using tree state with path-based updates",
-        code: `import { initTreeState, useTreeBonsai, set } from "@bonsai-ts/state";
+        title: "Tree State Counter (createStore)",
+        description: "Counter using createStore with DevTools enabled",
+        code: `import { createStore } from "@bonsai-ts/state";
 
-// Initialize tree state
-initTreeState({
-  initialState: {
+export const store = createStore(
+  {
     counter: 0,
-    user: { name: "John" }
-  }
-});
+    user: { name: "John" },
+  },
+  { devtools: true }
+);
 
 function Counter() {
-  const count = useTreeBonsai("counter");
-  const name = useTreeBonsai("user/name");
+  const count = store.use<number>("counter") || 0;
+  const name = store.use<string>("user/name") || "";
 
   return (
     <div className="p-4 space-y-4">
       <h2 className="text-xl font-bold">Tree State Example</h2>
       <div>
         <p>Count: {count}</p>
-        <button 
-          onClick={() => set("counter", count + 1)}
+        <button
+          onClick={() => store.set("counter", count + 1)}
           className="bg-blue-500 text-white px-4 py-2 rounded mr-2"
         >
           Increment
         </button>
-        <button 
-          onClick={() => set("counter", 0)}
+        <button
+          onClick={() => store.set("counter", 0)}
           className="bg-gray-500 text-white px-4 py-2 rounded"
         >
           Reset
@@ -59,9 +59,9 @@ function Counter() {
       </div>
       <div>
         <p>User: {name}</p>
-        <input 
+        <input
           value={name}
-          onChange={(e) => set("user/name", e.target.value)}
+          onChange={(e) => store.set("user/name", e.target.value)}
           className="border px-3 py-2 rounded"
           placeholder="Enter name"
         />
@@ -137,37 +137,35 @@ function TodoApp() {
 export default TodoApp;`,
       },
       {
-        title: "Middleware Example",
-        description: "State with validation and logging middleware",
-        code: `import { initTreeState, useTreeBonsai, set, useTreeMiddleware } from "@bonsai-ts/state";
+        title: "Middleware Example (createStore)",
+        description: "Validation + logging via createStore middleware",
+        code: `import { createStore, createValidationMiddleware } from "@bonsai-ts/state";
 
-// Initialize with middleware
-initTreeState({
-  initialState: {
-    user: { age: 18, name: "" }
+// Koa-style logging middleware
+const logger = (next) => (path, value, prev) => {
+  console.log("[Log]", { path, prev, value });
+  return next(path, value);
+};
+
+// Validation middleware
+const nameValidator = createValidationMiddleware((path, value) => {
+  if (path === "user/name" && typeof value === "string" && value.length < 2) {
+    return "Name must be at least 2 characters";
   }
+  if (path === "user/age" && (value < 0 || value > 120)) {
+    return "Age must be between 0 and 120";
+  }
+  return true;
 });
 
-// Add validation middleware
-useTreeMiddleware((path, nextValue, oldValue) => {
-  console.log(\`Updating \${path} from \${oldValue} to \${nextValue}\`);
-  
-  if (path === "user/age" && (nextValue < 0 || nextValue > 120)) {
-    console.error("Age must be between 0 and 120");
-    return false; // Block the update
-  }
-  
-  if (path === "user/name" && nextValue.length < 2) {
-    console.error("Name must be at least 2 characters");
-    return false;
-  }
-  
-  return nextValue;
-});
+export const store = createStore(
+  { user: { age: 18, name: "" } },
+  { middleware: [logger, nameValidator] }
+);
 
 function UserForm() {
-  const age = useTreeBonsai("user/age");
-  const name = useTreeBonsai("user/name");
+  const age = store.use<number>("user/age") ?? 0;
+  const name = store.use<string>("user/name") ?? "";
 
   return (
     <div className="p-4 space-y-4">
@@ -176,7 +174,7 @@ function UserForm() {
         <label className="block mb-2">Name (min 2 chars):</label>
         <input
           value={name}
-          onChange={(e) => set("user/name", e.target.value)}
+          onChange={(e) => store.set("user/name", e.target.value)}
           className="border px-3 py-2 rounded w-full"
           placeholder="Enter name"
         />
@@ -186,15 +184,13 @@ function UserForm() {
         <input
           type="number"
           value={age}
-          onChange={(e) => set("user/age", parseInt(e.target.value) || 0)}
+          onChange={(e) => store.set("user/age", parseInt(e.target.value) || 0)}
           className="border px-3 py-2 rounded w-full"
           min="0"
           max="120"
         />
       </div>
-      <div className="text-sm text-gray-600">
-        Check the console for validation messages!
-      </div>
+      <div className="text-sm text-gray-600">Check the console for validation messages!</div>
     </div>
   );
 }

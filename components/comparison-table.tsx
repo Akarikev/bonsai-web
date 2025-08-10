@@ -41,7 +41,7 @@ export default function ComparisonTable() {
                 "✗",
                 "✗",
               ],
-              ["Tree Path 🌳", '`use("todos.byId.1")` ✅', "✗", "✅", "✗"],
+              ["Tree Path 🌳", '`use("todos/byId/1")` ✅', "✗", "✅", "✗"],
               [
                 "Middleware 🧩",
                 "Built-in & stackable 🪄",

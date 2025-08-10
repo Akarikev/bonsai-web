@@ -11,9 +11,9 @@ export default function DocsPage() {
   const [activeTab, setActiveTab] = useState("overview");
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50 relative">
       {/* 🌿 NavBar with Bonsai vibes */}
-      <nav className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+      <nav className="border-b bg-white/70 backdrop-blur-md sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/">
             <BonsaiLogo size="md" />
@@ -49,7 +49,7 @@ export default function DocsPage() {
       </nav>
 
       {/* 📖 Docs Header */}
-      <div className="border-b bg-gray-50">
+      <div className="border-b bg-gradient-to-r from-emerald-50 to-teal-50">
         <div className="container mx-auto px-4 py-12">
           <div className="flex items-center gap-2 mb-2">
             <Link href="/" className="text-gray-600 hover:text-gray-900">
@@ -72,8 +72,8 @@ export default function DocsPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* 🍃 Sidebar Tabs */}
-          <div className="lg:w-64 flex-shrink-0">
-            <div className="sticky top-24">
+          <div className="lg:w-72 flex-shrink-0">
+            <div className="sticky top-24 bg-white/70 backdrop-blur border border-emerald-100 rounded-2xl shadow-sm p-3">
               <h3 className="font-semibold mb-4 text-gray-900">
                 🌿 Bonsai Guidebook
               </h3>
@@ -81,7 +81,7 @@ export default function DocsPage() {
                 <li>
                   <Button
                     variant={activeTab === "overview" ? "secondary" : "ghost"}
-                    className="w-full justify-start"
+                    className="w-full justify-start rounded-lg px-3 transition-all hover:translate-x-0.5"
                     onClick={() => setActiveTab("overview")}
                   >
                     📖 Overview
@@ -90,7 +90,7 @@ export default function DocsPage() {
                 <li>
                   <Button
                     variant={activeTab === "tree-state" ? "secondary" : "ghost"}
-                    className="w-full justify-start"
+                    className="w-full justify-start rounded-lg px-3 transition-all hover:translate-x-0.5"
                     onClick={() => setActiveTab("tree-state")}
                   >
                     🌳 Tree State
@@ -99,7 +99,7 @@ export default function DocsPage() {
                 <li>
                   <Button
                     variant={activeTab === "flat-state" ? "secondary" : "ghost"}
-                    className="w-full justify-start"
+                    className="w-full justify-start rounded-lg px-3 transition-all hover:translate-x-0.5"
                     onClick={() => setActiveTab("flat-state")}
                   >
                     🌱 Flat State
@@ -108,7 +108,7 @@ export default function DocsPage() {
                 <li>
                   <Button
                     variant={activeTab === "middleware" ? "secondary" : "ghost"}
-                    className="w-full justify-start"
+                    className="w-full justify-start rounded-lg px-3 transition-all hover:translate-x-0.5"
                     onClick={() => setActiveTab("middleware")}
                   >
                     🛠️ Middleware
@@ -117,7 +117,7 @@ export default function DocsPage() {
                 <li>
                   <Button
                     variant={activeTab === "examples" ? "secondary" : "ghost"}
-                    className="w-full justify-start"
+                    className="w-full justify-start rounded-lg px-3 transition-all hover:translate-x-0.5"
                     onClick={() => setActiveTab("examples")}
                   >
                     🧩 Examples
@@ -135,7 +135,7 @@ export default function DocsPage() {
               className="w-full"
             >
               <TabsContent value="overview" className="mt-0">
-                <div className="prose max-w-none space-y-8 p-4">
+                <div className="prose max-w-none space-y-8 bg-white/70 backdrop-blur border border-emerald-100 rounded-2xl shadow-sm p-6">
                   <h2 className="text-gray-900 tracking-tight text-4xl mb-6">
                     Bonsai: Your State Tree Whisperer 🌳✨
                   </h2>
@@ -191,13 +191,39 @@ export default function DocsPage() {
                       Works perfectly in both client and server components.
                       Hydration? Handled. Transitions? Smooth like butter.
                     </p>
+                    <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-emerald-900">
+                      <p className="font-medium">What’s new in v1.1.0</p>
+                      <ul className="list-disc pl-5 mt-2 space-y-1">
+                        <li>
+                          <strong>createStore</strong>: one-call setup with
+                          options <code>{`{ devtools, middleware }`}</code>
+                        </li>
+                        <li>
+                          <strong>DevTools auto-mount</strong>: enable with{" "}
+                          <code>devtools: true</code>; toggle with{" "}
+                          <code>Ctrl+Shift+B</code>
+                        </li>
+                        <li>
+                          <strong>Koa-style middleware adapter</strong>:{" "}
+                          <code>
+                            (next) =&gt; (path, value, prev) =&gt; next(path,
+                            value)
+                          </code>
+                        </li>
+                        <li>
+                          Classic APIs remain supported (
+                          <code>initTreeState</code>, <code>useTreeBonsai</code>
+                          , <code>set</code>, <code>subscribe</code>)
+                        </li>
+                      </ul>
+                    </div>
                   </div>
 
                   <div className="space-y-6">
                     <h3 className="text-gray-900 tracking-tight text-2xl">
                       📦 Install It Like It&apos;s Hot
                     </h3>
-                    <div className="bg-gray-900 rounded-lg p-4 space-y-2">
+                    <div className="bg-gray-950 rounded-xl p-4 space-y-2 ring-1 ring-gray-800 shadow-lg overflow-hidden">
                       <code className="text-emerald-400 font-mono block">
                         npm install @bonsai-ts/state
                       </code>
@@ -216,37 +242,31 @@ export default function DocsPage() {
                   <div className="space-y-8">
                     <div className="space-y-4">
                       <h4 className="text-gray-900 tracking-tight text-xl">
-                        Client Components
+                        Client Components (createStore)
                       </h4>
-                      <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                      <div className="bg-gray-950 rounded-xl p-4 overflow-x-auto ring-1 ring-gray-800 shadow-lg">
                         <pre className="text-sm">
                           <code className="text-gray-300 font-mono">
                             {`"use client";
 
-import { initTreeState, useTreeBonsai, set } from "@bonsai-ts/state";
+import { createStore } from "@bonsai-ts/state";
 
-// Initialize tree state
-initTreeState({
-  initialState: {
+// Initialize once with options (auto-mount DevTools in dev when enabled)
+export const appStore = createStore(
+  {
     count: 0,
-    user: {
-      name: "elorm",
-      isActive: true,
-    },
+    user: { name: "elorm", isActive: true },
   },
-});
+  { devtools: true }
+);
 
 // Use in client components
 function Counter() {
-  const count = useTreeBonsai("count");
-  const name = useTreeBonsai("user/name");
-
+  const count = appStore.use<number>("count") || 0;
   return (
-    <div>
-      <p>Count: {count}</p>
-      <p>Name: {name}</p>
-      <button onClick={() => set("count", count + 1)}>Increment</button>
-    </div>
+    <button onClick={() => appStore.set("count", count + 1)}>
+      Increment ({count})
+    </button>
   );
 }`}
                           </code>
@@ -259,35 +279,30 @@ function Counter() {
                         Server Components
                       </h4>
                       <p className="text-gray-700 text-lg leading-relaxed">
-                        For server components, use Bonsai&apos;s server-side
-                        utilities to initialize state and pass it to client
-                        components:
+                        With <code>createStore</code>, the APIs are isomorphic.
+                        Define your store in a module and use it from client
+                        components. DevTools auto-mount only runs in the
+                        browser.
                       </p>
-                      <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                      <div className="bg-gray-950 rounded-xl p-4 overflow-x-auto ring-1 ring-gray-800 shadow-lg">
                         <pre className="text-sm">
                           <code className="text-gray-300 font-mono">
-                            {`// app/page.tsx (Server Component)
-import { initTreeState } from "@bonsai-ts/state";
+                            {`// store.ts
+import { createStore } from "@bonsai-ts/state";
+export const appStore = createStore({ count: 0 }, { devtools: true });
+
+// app/Counter.tsx (Client Component)
+"use client";
+import { appStore } from "./store";
+export function Counter() {
+  const count = appStore.use<number>("count") || 0;
+  return <button onClick={() => appStore.set("count", count + 1)}>{count}</button>;
+}
+
+// app/page.tsx (Server Component)
 import { Counter } from "./Counter";
-
-// Initialize state on the server
-initTreeState({
-  initialState: {
-    count: 0,
-    user: {
-      name: "elorm",
-      isActive: true,
-    },
-  },
-});
-
 export default function Page() {
-  return (
-    <div>
-      <h1>My App</h1>
-      <Counter />
-    </div>
-  );
+  return <Counter />;
 }`}
                           </code>
                         </pre>
@@ -323,7 +338,7 @@ export default function Page() {
               </TabsContent>
 
               <TabsContent value="tree-state" className="mt-0">
-                <div className="prose max-w-none space-y-8 p-4">
+                <div className="prose max-w-none space-y-8 bg-white/70 backdrop-blur border border-emerald-100 rounded-2xl shadow-sm p-6">
                   <h2 className="text-gray-900 tracking-tight text-4xl mb-6">
                     Tree State 🌳
                   </h2>
@@ -337,7 +352,7 @@ export default function Page() {
                     <h3 className="text-gray-900 tracking-tight text-2xl mb-4">
                       Basic Usage
                     </h3>
-                    <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto mb-6">
+                    <div className="bg-gray-950 rounded-xl p-4 overflow-x-auto mb-6 ring-1 ring-gray-800 shadow-lg">
                       <pre className="text-sm">
                         <code className="text-gray-300 font-mono">
                           {`import { initTreeState, useTreeBonsai, set } from "@bonsai-ts/state";
@@ -437,7 +452,7 @@ function Counter() {
               </TabsContent>
 
               <TabsContent value="flat-state" className="mt-0">
-                <div className="prose max-w-none space-y-8 p-4">
+                <div className="prose max-w-none space-y-8 bg-white/70 backdrop-blur border border-emerald-100 rounded-2xl shadow-sm p-6">
                   <h2 className="text-gray-900 tracking-tight text-4xl mb-6">
                     Flat State 🌱
                   </h2>
@@ -452,7 +467,7 @@ function Counter() {
                     <h3 className="text-gray-900 tracking-tight text-2xl mb-4">
                       Basic Usage
                     </h3>
-                    <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto mb-6">
+                    <div className="bg-gray-950 rounded-xl p-4 overflow-x-auto mb-6 ring-1 ring-gray-800 shadow-lg">
                       <pre className="text-sm">
                         <code className="text-gray-300 font-mono">
                           {`import { useBonsai, setState } from "@bonsai-ts/state";
@@ -530,7 +545,7 @@ function UserProfile() {
               </TabsContent>
 
               <TabsContent value="middleware" className="mt-0">
-                <div className="prose max-w-none space-y-8 p-4">
+                <div className="prose max-w-none space-y-8 bg-white/70 backdrop-blur border border-emerald-100 rounded-2xl shadow-sm p-6">
                   <h2 className="text-gray-900 tracking-tight text-4xl mb-6">
                     Middleware System 🛠️
                   </h2>
@@ -544,16 +559,24 @@ function UserProfile() {
                     <h3 className="text-gray-900 tracking-tight text-2xl mb-4">
                       Basic Middleware Usage
                     </h3>
-                    <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto mb-6">
+                    <div className="bg-gray-950 rounded-xl p-4 overflow-x-auto mb-6 ring-1 ring-gray-800 shadow-lg">
                       <pre className="text-sm">
                         <code className="text-gray-300 font-mono">
-                          {`import { useTreeMiddleware } from "@bonsai-ts/state";
+                          {`import { createStore } from "@bonsai-ts/state";
 
-// Register middleware
-useTreeMiddleware((path, nextVal, oldVal) => {
-  console.log(\`\${path} changed from\`, oldVal, "to", nextVal);
-  return nextVal;
-});`}
+// Koa-style middleware adapter (v1.1.0)
+const logger = (next) => (path, value, prev) => {
+  console.log("State change:", { path, prev, value });
+  return next(path, value);
+};
+
+export const store = createStore(
+  { count: 0 },
+  { middleware: [logger] }
+);
+
+// You can also add middleware later
+// store.addMiddleware(logger);`}
                         </code>
                       </pre>
                     </div>
@@ -568,7 +591,7 @@ useTreeMiddleware((path, nextVal, oldVal) => {
                         <h4 className="text-gray-900 tracking-tight text-xl mb-2">
                           Validation Middleware
                         </h4>
-                        <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto mb-4">
+                        <div className="bg-gray-950 rounded-xl p-4 overflow-x-auto mb-4 ring-1 ring-gray-800 shadow-lg">
                           <pre className="text-sm">
                             <code className="text-gray-300 font-mono">
                               {`const ageValidator = createValidationMiddleware<number>((path, nextValue) => {
@@ -585,7 +608,7 @@ useTreeMiddleware((path, nextVal, oldVal) => {
                         <h4 className="text-gray-900 tracking-tight text-xl mb-2">
                           Logging Middleware
                         </h4>
-                        <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                        <div className="bg-gray-950 rounded-xl p-4 overflow-x-auto ring-1 ring-gray-800 shadow-lg">
                           <pre className="text-sm">
                             <code className="text-gray-300 font-mono">
                               {`const logger = createLoggingMiddleware({
@@ -603,7 +626,7 @@ useTreeMiddleware((path, nextVal, oldVal) => {
               </TabsContent>
 
               <TabsContent value="examples" className="mt-0">
-                <div className="prose max-w-none space-y-8 p-4">
+                <div className="prose max-w-none space-y-8 bg-white/70 backdrop-blur border border-emerald-100 rounded-2xl shadow-sm p-6">
                   <h2 className="text-gray-900 tracking-tight text-4xl mb-6">
                     Examples 🧩
                   </h2>
@@ -616,7 +639,7 @@ useTreeMiddleware((path, nextVal, oldVal) => {
                     <h3 className="text-gray-900 tracking-tight text-2xl mb-4">
                       Form Handling with Validation
                     </h3>
-                    <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto mb-6">
+                    <div className="bg-gray-950 rounded-xl p-4 overflow-x-auto mb-6 ring-1 ring-gray-800 shadow-lg">
                       <pre className="text-sm">
                         <code className="text-gray-300 font-mono">
                           {`initTreeState({
@@ -642,10 +665,16 @@ useTreeMiddleware((path, nextVal, oldVal) => {
                     <h3 className="text-gray-900 tracking-tight text-2xl mb-4">
                       DevTools Integration
                     </h3>
-                    <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                    <div className="bg-gray-950 rounded-xl p-4 overflow-x-auto ring-1 ring-gray-800 shadow-lg">
                       <pre className="text-sm">
                         <code className="text-gray-300 font-mono">
-                          {`import { DevPanel } from "@bonsai-ts/state";
+                          {`// Option A: Auto-mount (recommended)
+import { createStore } from "@bonsai-ts/state";
+export const store = createStore({ count: 0 }, { devtools: true });
+// Hotkey: Ctrl+Shift+B
+
+// Option B: Manual render
+import { DevPanel } from "@bonsai-ts/state/devtools";
 
 function App() {
   return (

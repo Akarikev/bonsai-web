@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   Check,
@@ -26,6 +26,24 @@ import { AnimatedBonsai } from "@/components/animated-bonsai";
 
 export default function HomePage() {
   const [showPlayground, setShowPlayground] = useState(false);
+  const [showAnnouncement, setShowAnnouncement] = useState(true);
+  const ANNOUNCEMENT_KEY = "bonsai_announce_v1.1.0_dismissed";
+
+  useEffect(() => {
+    try {
+      const dismissed =
+        typeof window !== "undefined" &&
+        localStorage.getItem(ANNOUNCEMENT_KEY) === "1";
+      if (dismissed) setShowAnnouncement(false);
+    } catch {}
+  }, []);
+
+  const dismissAnnouncement = () => {
+    setShowAnnouncement(false);
+    try {
+      localStorage.setItem(ANNOUNCEMENT_KEY, "1");
+    } catch {}
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50">
@@ -62,6 +80,64 @@ export default function HomePage() {
           </div>
         </div>
       </nav>
+
+      {/* Announcement Banner */}
+      {showAnnouncement && (
+        <div className="px-4 pt-4">
+          <div className="container mx-auto max-w-5xl">
+            <div className="relative overflow-hidden rounded-2xl border border-emerald-200 bg-gradient-to-r from-emerald-50 to-teal-50">
+              <div className="p-4 md:p-5">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2">
+                      <span className="inline-flex items-center rounded-md bg-emerald-100 px-2 py-0.5 text-xs font-semibold text-emerald-800 ring-1 ring-inset ring-emerald-200">
+                        New
+                      </span>
+                      <p className="text-sm md:text-base text-emerald-900 font-semibold">
+                        Bonsai v1.1.0 is here
+                      </p>
+                    </div>
+                    <p className="mt-1 text-sm text-emerald-800">
+                      createStore API, DevTools auto-mount (
+                      <span className="font-medium">Ctrl+Shift+B</span>), and
+                      Koa-style middleware adapter. Classic APIs still
+                      supported.
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Link href="/docs">
+                      <Button
+                        size="sm"
+                        className="bg-emerald-600 hover:bg-emerald-700"
+                      >
+                        Read Docs
+                      </Button>
+                    </Link>
+                    <Link
+                      href="https://github.com/Akarikev/bonsai/blob/main/CHANGELOG.md"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button variant="outline" size="sm">
+                        Release Notes
+                      </Button>
+                    </Link>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="text-emerald-800"
+                      onClick={dismissAnnouncement}
+                      aria-label="Dismiss announcement"
+                    >
+                      ×
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Hero Section */}
       <section className="py-20 px-4">
